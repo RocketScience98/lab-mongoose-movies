@@ -1,0 +1,28 @@
+
+{{!-- movie/new.hbs --}}
+
+<h2>Add new Movie</h2>
+
+<form action="/movies/new" method="post">
+
+  <label for="name-input">Title:</label>
+  <input type="text" name="title" id="name-input" />
+
+  <label for="occupation-input">Director:</label>
+  <input type="string" name="director" id="occupation-input" />
+
+  <label for="catchPhrase-input">stars:</label>
+  <input type="string" name="stars" id="catchPhrase-input" />
+
+  <label for="image-input">Image <Link></Link>:</label>
+  <input type="text" name="image" id="image-input" />
+
+  <label for="image-input2">description <Link></Link>:</label>
+  <input type="text" name="description" id="image-input2" />
+
+  <label for="image-input2">showtimes <Link></Link>:</label>
+  <input type="text" name="showtimes" id="image-input2" />
+
+  <button type="submit">Create</button>
+
+</form>

@@ -1,0 +1,15 @@
+title, director , stars,image, description, showtimes
+
+<h2>Update the movie</h2>
+
+<form action="/movies/{{Movie.id}}/edit" method="post">
+    <label for="">Name:</label>
+    <input type="text" name="name" value="{{Celebrity.name}}">
+    <label for="">Propellers</label>
+    <input type="text" name="occupation" value="{{Celebrity.occupation}}">
+    <label for="">Max Speed</label>
+    <input type="text" name="catchPhrase" value="{{Celebrity.catchPhrase}}">
+    <label for="">Image</label>
+    <input type="text" name="image" value="{{Celebrity.image}}">
+    <button type="submit">Update</button>
+</form>

@@ -1,0 +1,22 @@
+
+{{!-- celebrity/new.hbs --}}
+
+<h2>Add new celebrity</h2>
+
+<form action="/celebrities/new" method="post">
+
+  <label for="name-input">Name:</label>
+  <input type="text" name="name" id="name-input" />
+
+  <label for="occupation-input">Occupation:</label>
+  <input type="string" name="occupation" id="occupation-input" />
+
+  <label for="catchPhrase-input">catchPhrase:</label>
+  <input type="string" name="catchPhrase" id="catchPhrase-input" />
+
+  <label for="image-input">Image <Link></Link>:</label>
+  <input type="text" name="image" id="image-input" />
+
+  <button type="submit">Create</button>
+
+</form>
