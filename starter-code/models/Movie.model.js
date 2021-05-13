@@ -23,4 +23,3 @@ const movieSchema = new Schema(
 
 //Exportacione
 module.exports =model("Movie",movieSchema)
-title, director , stars,image, description, showtimes

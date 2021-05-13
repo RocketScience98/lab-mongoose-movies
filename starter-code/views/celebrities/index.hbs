@@ -1,5 +1,8 @@
+    <a href ="/celebrities/new">Create Celebrities</a>
+    <a href="/">Go back</a>
 <h2>Famous Celebrities</h2>
 <div class="d-flex flex-wrap justify-content-center">
+
     {{#each celebrities}}
         <div class="card m-4" style="width: 18rem;">
         <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
@@ -14,8 +17,6 @@
                     <button class="btn btn-outline-danger m-2 d-inline">Delete</button>
                 </form>
                 </div>
-
-
             </div>
         </div>  
     {{/each}}

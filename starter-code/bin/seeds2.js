@@ -100,7 +100,7 @@ const movies = [
 
   Movie.create(movies)
   .then(moviesFromDB => {
-    console.log(`Created ${moviesFromDB.length} books`);
+    console.log(`Created ${moviesFromDB.length} movies`);
 
     // Once created, close the DB connection
     mongoose.connection.close();

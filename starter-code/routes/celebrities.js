@@ -7,12 +7,16 @@ const router = express.Router();
 router.get('/celebrities', (req, res, next) => {
   // Iteration #2: List the drones
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   Celebrity.find()
     .then(celebsFromDb => {
       console.log('celebrities:', celebsFromDb)
       res.render('celebrities/index',{celebrities: celebsFromDb})
     }).catch(e => {
-      console.log('Error while getting drones from Db')
+      console.log('Error while getting celebs from Db')
       next(e)
     })
 });
@@ -20,13 +24,17 @@ router.get('/celebrities', (req, res, next) => {
 //Celebrities:ID
 router.get('/celebrities/:id', (req, res, next) => {
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   const {id} =req.params;
   Celebrity.findById(id)
     .then(celebsFromid => {
       console.log('drones:', celebsFromid)
       res.render('celebrities/show',{celebrity: celebsFromid})
     }).catch(e => {
-      console.log('Error while getting drones from Db')
+      console.log('Error while getting celebs from Db')
       next(e)
     })
 });
@@ -35,6 +43,10 @@ router.get('/celebrities/:id', (req, res, next) => {
 
 router.get('/celebrities/new', (req, res, next) => {
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   res.render("celebrities/new")
   
 });
@@ -61,11 +73,15 @@ router.post('/celebrities/new', (req, res, next) => {
 router.post('/celebrities/:id/delete', (req, res, next) => {
   // Iteration #5: Delete the drone
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   const { id } = req.params
   Celebrity.findByIdAndDelete(id)
     .then(deletedCB => {
       res.redirect(`/celebrities`)
-      console.log('deleted:', deletedCD)
+      console.log('deleted:', deletedCB)
     })
     .catch(e => console.log('There was an error while deleting'))
 });
@@ -74,6 +90,11 @@ router.post('/celebrities/:id/delete', (req, res, next) => {
 router.get('/celebrities/:id/edit', (req, res, next) => {
   // Iteration #4: Update the drone
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
+
   const { id } = req.params
   Celebrity.findById(id)
     .then((ToEdit => {

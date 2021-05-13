@@ -6,6 +6,10 @@ const router = express.Router();
 //Movie
 
 router.get('/movies', (req, res, next) => {
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
     Movie.find()
     .then(moviesDB=>{
         console.log("Movies shown",moviesDB);
@@ -14,6 +18,10 @@ router.get('/movies', (req, res, next) => {
     })
  //get movie id   
     router.get("/movie/:id", (req, res, next) => {
+      const user = req.session.currentUser
+if (!user) {
+  return res.redirect("/login");
+}
         const { id } = req.params;
         Movie.findById(id)
           .then((moviebyId) => {
@@ -28,13 +36,17 @@ router.get('/movies', (req, res, next) => {
 
 //Movie Create
 
-router.get('/movie/new', (req, res, next) => {
+router.get('/movies/new', (req, res, next) => {
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   // ... your code here
-  res.render("movie/new")
+  res.render("movies/new")
   
 });
 
-router.post('/movie/new', (req, res, next) => {
+router.post('/movies/new', (req, res, next) => {
   // ... your code here 
     // console.log(req.body);
     const { title, director , stars,image, description, showtimes } = req.body;
@@ -46,7 +58,7 @@ router.post('/movie/new', (req, res, next) => {
       })
       .catch(error => {
         console.log(`Error while creating a new Celeb:`, error)
-        res.render("movie/new")
+        res.render("movies/new")
       });
   });
  
@@ -69,6 +81,10 @@ router.post('/movies/:id/delete', (req, res, next) => {
 router.get('/movies/:id/edit', (req, res, next) => {
   // Iteration #4: Update the drone
   // ... your code here
+  const user = req.session.currentUser
+  if (!user) {
+    return res.redirect("/login");
+}
   const { id } = req.params
   Movie.findById(id)
     .then((ToEdit => {
@@ -81,6 +97,11 @@ router.get('/movies/:id/edit', (req, res, next) => {
 router.post('/movies/:id/edit', (req, res, next) => {
 // Iteration #4: Update the drone
 // ... your code here
+
+const user = req.session.currentUser
+if (!user) {
+  return res.redirect("/login");
+}
 const { id } = req.params
 const {title, director , stars,image, description, showtimes } = req.body
 Movie.findByIdAndUpdate(id, { title, director , stars,image, description, showtimes},{new: true})
